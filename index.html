@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ma new to-do list</title>
+
+    <script defer src="https://unpkg.com/vue@next"></script>
+    <script defer type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <div id="root">
+        <section class="bigBloc">
+            <h1>My To-do list</h1>
+            <h2>Bon courage dans la liste de vos tâches!</h2>
+
+            <input @input="task" type="text" placeholder="Votre tâche">
+            <button @click="addTask">Ajouter</button>
+
+            <div class="containerTask">
+                <div class="left">
+                    <h3>Tâches à faire :</h3>
+                    <ul>   
+                        <li v-for="(element, index) in tasks">
+                            {{element}} 
+                            <button @click="startTask(index)">Commencer</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mid">
+                    <h3>Tâches en cours :</h3>
+                    <ul> 
+                        <li v-for="(element, index) in tasksInProgress">
+                            {{element}} 
+                            <button @click="endTask(index)">Terminer</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="right">
+                    <h3>Tâches terminées :</h3>
+                    <ul> 
+                        <li v-for="(element, index) in endedTasks">
+                            {{element}} 
+                            <button @click="removeTask(index)">Supprimer</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        
+            </div>
+        </section>
+    </div>
+</body>
+</html>
